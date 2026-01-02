@@ -1,0 +1,82 @@
+echo "# pipeline2" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Shivaji1487/pipeline2.git
+git push -u origin main
+…or push an existing repository from the command line
+git remote add origin https://github.com/Shivaji1487/pipeline2.git
+git branch -M main
+git push -u origin main
+
+
+
+single file upload on git in existing repository
+Check status
+git status
+You should see something like:
+modified: index.html
+2️⃣ Stage the changes
+git add app.html
+Or if you want to stage all changes:
+git add .
+3️⃣ Commit the changes
+git commit -m "Update index.html with new interactive message"
+4️⃣ Push to GitHub
+git push origin main
+Replace main with your branch name if it’s different.
+
+
+Fetch on remote server where your pipeline is working
+
+Option 1: Using git checkout for a single file
+
+From the repo folder on remote server:
+
+cd /path/to/pipeline2
+
+git fetch origin main
+git checkout origin/main -- app.html
+
+
+Explanation:
+
+git fetch origin main → fetches the latest changes from GitHub without merging.
+
+git checkout origin/main -- index.html → updates only index.html to the latest version from GitHub.
+
+
+
+
+git clone https://github.com/Shivaji1487/pipeline2.git
+vi app.html
+git add app.html
+git commit -m "Updated UI content"
+git push origin main
+
+
+Delete specific file.
+
+Xyz@LAPTOP-K0RDCQ74 MINGW64 /d/DevOpps/DevOps/pipeline2 (main)
+$ git rm index.html
+
+Xyz@LAPTOP-K0RDCQ74 MINGW64 /d/DevOpps/DevOps/pipeline2 (main)
+$ git commit -m "Remove index.html file"
+
+Xyz@LAPTOP-K0RDCQ74 MINGW64 /d/DevOpps/DevOps/pipeline2 (main)
+$ git push origin main
+
+Xyz@LAPTOP-K0RDCQ74 MINGW64 /d/DevOpps/DevOps/pipeline2 (main)
+
+
+
+Full pipeline flow (what actually happens)
+GitHub code fetched
+Docker image rebuilt
+Image pushed to Docker Hub
+Kubernetes deployment updated
+Old pod terminated
+New pod created with new image
+Updated app.html visible in browser
+This is correct CI/CD behavior.
